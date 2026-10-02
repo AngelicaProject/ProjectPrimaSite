@@ -86,6 +86,12 @@ function showStatus(content) {
 }
 
 function render(content) {
+  const banner = document.getElementById("banner");
+  if (content.banner) {
+    banner.innerHTML = `<p>${format(content.banner)}</p>`;
+    banner.hidden = false;
+  }
+
   for (const node of document.querySelectorAll("[data-text]")) {
     node.innerHTML = format(lookup(content, node.dataset.text) ?? "");
   }

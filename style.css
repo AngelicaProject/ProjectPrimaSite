@@ -52,6 +52,21 @@ code {
   overflow-wrap: anywhere;
 }
 
+.banner {
+  border-bottom: 1px solid var(--line);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 15px;
+}
+.banner[hidden] { display: none; }
+.banner p {
+  width: min(760px, 100% - 32px);
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+}
+.banner a { color: inherit; }
+
 .top, main, footer {
   width: min(760px, 100% - 32px);
   margin-inline: auto;
