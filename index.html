@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Title and description for search engines and link previews. The texts of the page are in content.json. -->
+  <title>Project Prima — Final Fantasy XIV на русском</title>
+  <meta name="description" content="Неофициальный фанатский перевод Final Fantasy XIV на русский язык. Устанавливается плагином Harmonia и обновляется сам.">
+  <meta property="og:title" content="Project Prima">
+  <meta property="og:description" content="Final Fantasy XIV на русском: неофициальный фанатский перевод.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <span class="mark" data-text="brand"></span>
+    <nav id="nav"></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 data-text="hero.heading"></h1>
+      <p class="lede" data-text="hero.lede"></p>
+      <p class="status" id="status" aria-live="polite"></p>
+      <p class="actions" id="buttons"></p>
+      <p class="note" data-text="hero.note"></p>
+    </section>
+
+    <section id="install" class="install">
+      <h2 data-text="install.heading"></h2>
+      <ol class="steps" id="steps"></ol>
+      <div id="questions"></div>
+    </section>
+
+    <section id="help" class="help">
+      <h2 data-text="help.heading"></h2>
+      <div id="help-text"></div>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+
+  <noscript><p class="noscript">Для этой страницы нужен JavaScript.</p></noscript>
+  <script src="main.js"></script>
+</body>
+</html>

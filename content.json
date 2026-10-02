@@ -1,0 +1,88 @@
+{
+  "brand": "Project Prima",
+  "feed": "https://angelicaproject.github.io/ProjectPrima/harmonia/feed-v1.json",
+
+  "nav": [
+    { "text": "Установка", "href": "#install" },
+    { "text": "Помочь", "href": "#help" },
+    { "text": "Discord", "href": "https://discord.gg/B9T9qVhcxh" }
+  ],
+
+  "hero": {
+    "heading": "Final Fantasy XIV на русском",
+    "lede": "Полная неофициальная локализация",
+    "status": {
+      "loading": "Проверяем последнюю версию…",
+      "latest": "Последняя версия: {date}",
+      "testing": "Тестовая версия: {date}",
+      "soon": "Первая версия скоро"
+    },
+    "buttons": [
+      { "text": "Как установить", "href": "#install", "style": "primary" },
+      { "text": "Discord проекта", "href": "https://discord.gg/B9T9qVhcxh", "style": "ghost" }
+    ],
+    "note": "Проект на ранней стадии: в переводе встречаются ошибки. О проблемах можно сообщать в issues [репозитория на GitHub](https://github.com/AngelicaProject/ProjectPrima) или в Discord."
+  },
+
+  "install": {
+    "heading": "Установка",
+    "steps": [
+      {
+        "title": "Установите XIVLauncher",
+        "text": "Скачайте его с официального сайта [XIVLauncher](https://goatcorp.github.io/), войдите в свой аккаунт и запустите игру через него. Если в игре команда `/xlplugins` открывает окно плагинов, всё готово."
+      },
+      {
+        "title": "Добавьте источники плагинов",
+        "text": "В игре введите в чат `/xlsettings`, откройте вкладку **Experimental** и в разделе **Custom Plugin Repositories** добавьте по очереди две ссылки (каждую — кнопкой **+**). Проверьте, что у обеих стоит галочка **Enabled**, и нажмите **Save and Close**.",
+        "copy": [
+          { "label": "Harmonia — показывает перевод", "value": "https://raw.githubusercontent.com/AngelicaProject/Harmonia/main/repo.json" },
+          { "label": "Penumbra — шрифты с кириллицей", "value": "https://raw.githubusercontent.com/xivdev/Penumbra/master/repo.json" }
+        ]
+      },
+      {
+        "title": "Установите плагины",
+        "text": "Введите `/xlplugins`, найдите в поиске **Harmonia** и **Penumbra** и нажмите **Install** у каждого."
+      },
+      {
+        "title": "Добавьте перевод",
+        "text": "Введите `/harmonia`, нажмите **«Добавить перевод»**, в поле **«По ссылке»**, вставьте ссылку ниже и нажмите **«Добавить»**.",
+        "copy": [
+          { "label": "Ссылка на перевод", "value": "https://angelicaproject.github.io/ProjectPrima/harmonia/feed-v1.json" }
+        ]
+      },
+      {
+        "title": "Перезапустите игру",
+        "text": "Перевод включится при следующем запуске. Новые версии Harmonia скачивает сама и применяет после перезапуска игры."
+      }
+    ],
+    "questions": [
+      {
+        "question": "Как выключить перевод",
+        "answer": "Введите `/harmonia` и выключите перевод на его карточке, затем перезапустите игру."
+      },
+      {
+        "question": "Что происходит, когда обновляется игра?",
+        "answer": "Обновления игры не ломают локализацию и не требуют никаких действий. Изменённые и добавленные в патче строки будут показываться на оригинальном языке игры, незатронутые в обновлении части текста продолжат работать и отображаться корректно. Как только обновится локализация Harmonia сама обновит установленный пак и попросит перезапустить игру."
+      },
+      {
+        "question": "Что-то не получилось",
+        "answer": "Напишите в [Discord](https://discord.gg/B9T9qVhcxh): что делали и что видите на экране, лучше со скриншотом."
+      }
+    ]
+  },
+
+  "help": {
+    "heading": "Помочь проекту",
+    "paragraphs": [
+      "Проект открыт для всего сообщества. Объём текста большой и ему нужна вычитка, каждый желающий поучавствовать приветствуется в [Discord](https://discord.gg/B9T9qVhcxh).",
+      "[Репозиторий на GitHub](https://github.com/AngelicaProject/ProjectPrima) и [инструкция для переводчиков](https://github.com/AngelicaProject/ProjectPrima/blob/main/CONTRIBUTING.md)."
+    ]
+  },
+
+  "footer": [
+    "Переводы распространяются по лицензии [CC BY-NC-SA 4.0](https://github.com/AngelicaProject/ProjectPrima/blob/main/LICENSE). Проект создан и поддерживается с помощью [Aeria](https://github.com/AngelicaProject/Aeria)",
+    "Project Prima — неофициальный фанатский проект, не связанный со Square Enix. FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd. FINAL FANTASY XIV © SQUARE ENIX."
+  ],
+
+  "copyButton": { "idle": "Скопировать", "done": "Скопировано" }
+}
