@@ -66,6 +66,7 @@ function releaseDate(version) {
 function showStatus(content) {
   const status = document.getElementById("status");
   const texts = content.hero.status;
+  if (!status || !texts) return;
   status.textContent = texts.loading;
   fetch(content.feed, { cache: "no-store" })
     .then((response) => (response.ok ? response.json() : null))
@@ -85,9 +86,21 @@ function showStatus(content) {
     });
 }
 
+// Fills the element with this id when the page has it. A browser may keep an
+// older index.html from its cache next to a newer script, and a part missing
+// from that page must not stop the rest of it.
+function fill(id, build) {
+  const node = document.getElementById(id);
+  if (node) build(node);
+}
+
 function render(content) {
-  const banner = document.getElementById("banner");
   if (content.banner) {
+    let banner = document.getElementById("banner");
+    if (!banner) {
+      banner = element("div", { class: "banner", id: "banner", role: "note" });
+      document.body.prepend(banner);
+    }
     banner.innerHTML = `<p>${format(content.banner)}</p>`;
     banner.hidden = false;
   }
@@ -96,35 +109,41 @@ function render(content) {
     node.innerHTML = format(lookup(content, node.dataset.text) ?? "");
   }
 
-  const nav = document.getElementById("nav");
-  for (const link of content.nav) nav.append(element("a", { href: link.href }, escape(link.text)));
+  fill("nav", (nav) => {
+    for (const link of content.nav ?? []) nav.append(element("a", { href: link.href }, escape(link.text)));
+  });
 
-  const buttons = document.getElementById("buttons");
-  for (const button of content.hero.buttons) {
-    const style = button.style === "ghost" ? "button ghost" : "button";
-    buttons.append(element("a", { class: style, href: button.href }, escape(button.text)));
-  }
+  fill("buttons", (buttons) => {
+    for (const button of content.hero?.buttons ?? []) {
+      const style = button.style === "ghost" ? "button ghost" : "button";
+      buttons.append(element("a", { class: style, href: button.href }, escape(button.text)));
+    }
+  });
 
-  const steps = document.getElementById("steps");
-  for (const step of content.install.steps) {
-    const item = element("li");
-    item.append(element("h3", {}, format(step.title)), element("p", {}, format(step.text)));
-    for (const copy of step.copy ?? []) item.append(copyBlock(copy, content.copyButton));
-    steps.append(item);
-  }
+  fill("steps", (steps) => {
+    for (const step of content.install?.steps ?? []) {
+      const item = element("li");
+      item.append(element("h3", {}, format(step.title ?? "")), element("p", {}, format(step.text ?? "")));
+      for (const copy of step.copy ?? []) item.append(copyBlock(copy, content.copyButton));
+      steps.append(item);
+    }
+  });
 
-  const questions = document.getElementById("questions");
-  for (const entry of content.install.questions ?? []) {
-    const details = element("details");
-    details.append(element("summary", {}, format(entry.question)), element("p", {}, format(entry.answer)));
-    questions.append(details);
-  }
+  fill("questions", (questions) => {
+    for (const entry of content.install?.questions ?? []) {
+      const details = element("details");
+      details.append(element("summary", {}, format(entry.question ?? "")), element("p", {}, format(entry.answer ?? "")));
+      questions.append(details);
+    }
+  });
 
-  const help = document.getElementById("help-text");
-  for (const paragraph of content.help.paragraphs) help.append(element("p", {}, format(paragraph)));
+  fill("help-text", (help) => {
+    for (const paragraph of content.help?.paragraphs ?? []) help.append(element("p", {}, format(paragraph)));
+  });
 
-  const footer = document.getElementById("footer");
-  for (const paragraph of content.footer) footer.append(element("p", {}, format(paragraph)));
+  fill("footer", (footer) => {
+    for (const paragraph of content.footer ?? []) footer.append(element("p", {}, format(paragraph)));
+  });
 
   showStatus(content);
 }
