@@ -6,7 +6,7 @@
   "nav": [
     { "text": "Установка", "href": "#install" },
     { "text": "Помочь", "href": "#help" },
-    { "text": "Discord", "href": "https://discord.gg/B9T9qVhcxh" }
+    { "text": "Discord", "href": "https://discord.gg/wFRjBNJBpP" }
   ],
 
   "hero": {
@@ -20,7 +20,7 @@
     },
     "buttons": [
       { "text": "Как установить", "href": "#install", "style": "primary" },
-      { "text": "Discord проекта", "href": "https://discord.gg/B9T9qVhcxh", "style": "ghost" }
+      { "text": "Discord проекта", "href": "https://discord.gg/wFRjBNJBpP", "style": "ghost" }
     ],
     "note": "Проект на ранней стадии: в переводе встречаются ошибки. О проблемах можно сообщать в issues [репозитория на GitHub](https://github.com/AngelicaProject/ProjectPrima) или в Discord."
   },
@@ -67,11 +67,11 @@
       },
       {
         "question": "Отдельные плагины перестают работать, когда перевод активен",
-        "answer": "Некоторые массово используемые плагины могут не учитывать сценарий, когда ожидаемые ими строки игры теперь переведены, о таких стоит сообщить в issues [репозитория на GitHub](https://github.com/AngelicaProject/ProjectPrima) или в [Discord](https://discord.gg/B9T9qVhcxh)."
+        "answer": "Некоторые массово используемые плагины могут не учитывать сценарий, когда ожидаемые ими строки игры теперь переведены, о таких стоит сообщить в issues [репозитория на GitHub](https://github.com/AngelicaProject/ProjectPrima) или в [Discord](https://discord.gg/wFRjBNJBpP)."
       },
       {
         "question": "Что-то не получилось",
-        "answer": "Напишите в [Discord](https://discord.gg/B9T9qVhcxh): что делали и что видите на экране, лучше со скриншотом."
+        "answer": "Напишите в [Discord](https://discord.gg/wFRjBNJBpP): что делали и что видите на экране, лучше со скриншотом."
       }
     ]
   },
@@ -79,7 +79,7 @@
   "help": {
     "heading": "Помочь проекту",
     "paragraphs": [
-      "Проект открыт для всего сообщества. Объём текста большой и ему нужна вычитка, каждый желающий поучавствовать приветствуется в [Discord](https://discord.gg/B9T9qVhcxh).",
+      "Проект открыт для всего сообщества. Объём текста большой и ему нужна вычитка, каждый желающий поучавствовать приветствуется в [Discord](https://discord.gg/wFRjBNJBpP).",
       "[Репозиторий на GitHub](https://github.com/AngelicaProject/ProjectPrima) и [инструкция для переводчиков](https://github.com/AngelicaProject/ProjectPrima/blob/main/CONTRIBUTING.md)."
     ]
   },
