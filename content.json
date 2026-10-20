@@ -27,39 +27,89 @@
 
   "install": {
     "heading": "Установка",
-    "steps": [
+    "intro": "Перевод показывает плагин Harmonia. Поставить его можно одним из двух способов: выберите подходящий и следуйте только его шагам.",
+    "methods": [
       {
-        "title": "Установите XIVLauncher",
-        "text": "Скачайте его с официального сайта [XIVLauncher](https://goatcorp.github.io/), войдите в свой аккаунт и запустите игру через него. Если в игре команда `/xlplugins` открывает окно плагинов, всё готово."
-      },
-      {
-        "title": "Добавьте источники плагинов",
-        "text": "В игре введите в чат `/xlsettings`, откройте вкладку **Experimental** и в разделе **Custom Plugin Repositories** добавьте по очереди две ссылки (каждую — кнопкой **+**). Проверьте, что у обеих стоит галочка **Enabled**, и нажмите **Save and Close**.",
-        "copy": [
-          { "label": "Harmonia — показывает перевод", "value": "https://raw.githubusercontent.com/AngelicaProject/Harmonia/main/repo.json" },
-          { "label": "Penumbra — шрифты с кириллицей", "value": "https://raw.githubusercontent.com/xivdev/Penumbra/master/repo.json" }
+        "id": "dalamud",
+        "tab": "Через Dalamud",
+        "summary": "Harmonia как плагин Dalamud, платформы плагинов, которую запускает XIVLauncher. Подходит, если вы уже пользуетесь плагинами Dalamud.",
+        "steps": [
+          {
+            "title": "Установите XIVLauncher",
+            "text": "Скачайте его с официального сайта [XIVLauncher](https://goatcorp.github.io/), войдите в свой аккаунт и запустите игру через него. Если в игре команда `/xlplugins` открывает окно плагинов, всё готово."
+          },
+          {
+            "title": "Добавьте источники плагинов",
+            "text": "В игре введите в чат `/xlsettings`, откройте вкладку **Experimental** и в разделе **Custom Plugin Repositories** добавьте по очереди две ссылки (каждую — кнопкой **+**). Проверьте, что у обеих стоит галочка **Enabled**, и нажмите **Save and Close**.",
+            "copy": [
+              { "label": "Harmonia — показывает перевод", "value": "https://raw.githubusercontent.com/AngelicaProject/Harmonia/main/repo.json" },
+              { "label": "Penumbra — шрифты с кириллицей", "value": "https://raw.githubusercontent.com/xivdev/Penumbra/master/repo.json" }
+            ]
+          },
+          {
+            "title": "Установите плагины",
+            "text": "Введите `/xlplugins`, найдите в поиске **Harmonia** и **Penumbra** и нажмите **Install** у каждого."
+          },
+          {
+            "title": "Добавьте перевод",
+            "text": "Введите `/harmonia`, нажмите **«Добавить перевод»**, в поле **«По ссылке»**, вставьте ссылку ниже и нажмите **«Добавить»**.",
+            "copy": [
+              { "label": "Ссылка на перевод", "value": "https://angelicaproject.github.io/ProjectPrima/harmonia/feed-v1.json" }
+            ]
+          },
+          {
+            "title": "Перезапустите игру",
+            "text": "Перевод включится при следующем запуске. Новые версии Harmonia скачивает сама и применяет после перезапуска игры."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Как выключить перевод",
+            "answer": "Введите `/harmonia` и выключите перевод на его карточке, затем перезапустите игру."
+          }
         ]
       },
       {
-        "title": "Установите плагины",
-        "text": "Введите `/xlplugins`, найдите в поиске **Harmonia** и **Penumbra** и нажмите **Install** у каждого."
-      },
-      {
-        "title": "Добавьте перевод",
-        "text": "Введите `/harmonia`, нажмите **«Добавить перевод»**, в поле **«По ссылке»**, вставьте ссылку ниже и нажмите **«Добавить»**.",
-        "copy": [
-          { "label": "Ссылка на перевод", "value": "https://angelicaproject.github.io/ProjectPrima/harmonia/feed-v1.json" }
+        "id": "angelica",
+        "tab": "Через Angelica",
+        "summary": "Harmonia как плагин [Angelica](https://angelicaproject.github.io/angelica/), другой платформы плагинов. Angelica ставится рядом с игрой и запускается вместе с ней, как бы вы ни запускали игру: через Steam, официальный лаунчер или XIVLauncher. Сейчас она в тестовой версии.",
+        "steps": [
+          {
+            "title": "Установите Angelica",
+            "text": "Скачайте [angelica-setup.exe](https://github.com/AngelicaProject/angelica/releases/download/nightly/angelica-setup.exe) и запустите. Установщик сам найдёт игру, останется нажать **«Установить»**. Для Linux и Steam Deck — [своя инструкция](https://angelicaproject.github.io/angelica/install.html#install-on-linux-or-steam-deck)."
+          },
+          {
+            "title": "Установите Harmonia",
+            "text": "Запустите игру и нажмите **Insert** или введите в чат `/angelica`. На вкладке **«Каталог»** найдите **Harmonia** и нажмите **«Установить»**, затем **«Разрешить и включить»**."
+          },
+          {
+            "title": "Установите перевод",
+            "text": "Выберите Harmonia в списке и нажмите **«Управление плагином»**. В разделе **«Предложение»** уже будет Project Prima: нажмите **«Установить»**. Если его нет, вставьте ссылку ниже в поле **«Своя ссылка»** и нажмите **«Добавить»**.",
+            "copy": [
+              { "label": "Ссылка на перевод", "value": "https://angelicaproject.github.io/ProjectPrima/harmonia/feed-v1.json" }
+            ]
+          },
+          {
+            "title": "Перезапустите игру",
+            "text": "Перевод включится при следующем запуске. Новые версии перевода, Harmonia и Angelica скачиваются сами."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Как выключить перевод",
+            "answer": "Нажмите **Insert**, на вкладке **«Установленные»** выключите Harmonia переключателем рядом с ней и перезапустите игру."
+          },
+          {
+            "question": "Windows не даёт запустить установщик",
+            "answer": "Так Windows встречает программы, которые ещё мало кто скачивал. Нажмите **«Подробнее»**, затем **«Выполнить в любом случае»**."
+          }
         ]
-      },
-      {
-        "title": "Перезапустите игру",
-        "text": "Перевод включится при следующем запуске. Новые версии Harmonia скачивает сама и применяет после перезапуска игры."
       }
     ],
     "questions": [
       {
-        "question": "Как выключить перевод",
-        "answer": "Введите `/harmonia` и выключите перевод на его карточке, затем перезапустите игру."
+        "question": "Можно ли поставить оба способа?",
+        "answer": "Можно, они не мешают друг другу. Когда в игре работает Dalamud, перевод показывает Harmonia в Dalamud, а Harmonia в Angelica ждёт. В дни, когда Dalamud ещё не обновился после патча, перевод показывает Angelica. Перевод нужно добавить в обе Harmonia."
       },
       {
         "question": "Что происходит, когда обновляется игра?",

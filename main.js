@@ -86,6 +86,69 @@ function showStatus(content) {
     });
 }
 
+function stepItems(steps, labels) {
+  return steps.map((step) => {
+    const item = element("li");
+    item.append(element("h3", {}, format(step.title ?? "")), element("p", {}, format(step.text ?? "")));
+    for (const copy of step.copy ?? []) item.append(copyBlock(copy, labels));
+    return item;
+  });
+}
+
+function questionItems(entries) {
+  return entries.map((entry) => {
+    const details = element("details");
+    details.append(element("summary", {}, format(entry.question ?? "")), element("p", {}, format(entry.answer ?? "")));
+    return details;
+  });
+}
+
+// The ways to install, one shown at a time so their steps never mix. The
+// choice is kept in the address (#install-<id>) and in the browser.
+function showInstall(content, steps) {
+  const install = content.install ?? {};
+  const methods = install.methods ?? [{ id: "", steps: install.steps ?? [] }];
+  const questions = document.getElementById("questions");
+
+  function pick(id) {
+    const method = methods.find((entry) => entry.id === id) ?? methods[0];
+    for (const tab of tabs?.children ?? []) tab.setAttribute("aria-selected", String(tab.dataset.id === method.id));
+    if (summary) summary.innerHTML = format(method.summary ?? "");
+    steps.replaceChildren(...stepItems(method.steps ?? [], content.copyButton));
+    questions?.replaceChildren(...questionItems([...(method.questions ?? []), ...(install.questions ?? [])]));
+    return method.id;
+  }
+
+  let tabs = null;
+  let summary = null;
+  if (methods.length > 1) {
+    const intro = element("p", { class: "intro" }, format(install.intro ?? ""));
+    tabs = element("div", { class: "methods", role: "tablist" });
+    summary = element("p", { class: "summary", role: "tabpanel" });
+    for (const method of methods) {
+      const tab = element("button", { type: "button", role: "tab", "data-id": method.id }, escape(method.tab ?? method.id));
+      tab.addEventListener("click", () => {
+        pick(method.id);
+        history.replaceState(null, "", `#install-${method.id}`);
+        try { localStorage.setItem("install-method", method.id); } catch {}
+      });
+      tabs.append(tab);
+    }
+    steps.before(intro, tabs, summary);
+  }
+
+  const fromHash = () => /^#install-(.+)$/.exec(location.hash)?.[1];
+  let saved = null;
+  try { saved = localStorage.getItem("install-method"); } catch {}
+  pick(fromHash() ?? saved);
+  if (fromHash()) document.getElementById("install")?.scrollIntoView();
+  window.addEventListener("hashchange", () => {
+    if (!fromHash()) return;
+    pick(fromHash());
+    document.getElementById("install")?.scrollIntoView();
+  });
+}
+
 // Fills the element with this id when the page has it. A browser may keep an
 // older index.html from its cache next to a newer script, and a part missing
 // from that page must not stop the rest of it.
@@ -120,22 +183,7 @@ function render(content) {
     }
   });
 
-  fill("steps", (steps) => {
-    for (const step of content.install?.steps ?? []) {
-      const item = element("li");
-      item.append(element("h3", {}, format(step.title ?? "")), element("p", {}, format(step.text ?? "")));
-      for (const copy of step.copy ?? []) item.append(copyBlock(copy, content.copyButton));
-      steps.append(item);
-    }
-  });
-
-  fill("questions", (questions) => {
-    for (const entry of content.install?.questions ?? []) {
-      const details = element("details");
-      details.append(element("summary", {}, format(entry.question ?? "")), element("p", {}, format(entry.answer ?? "")));
-      questions.append(details);
-    }
-  });
+  fill("steps", (steps) => showInstall(content, steps));
 
   fill("help-text", (help) => {
     for (const paragraph of content.help?.paragraphs ?? []) help.append(element("p", {}, format(paragraph)));

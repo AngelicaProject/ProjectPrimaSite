@@ -137,6 +137,35 @@ h3 { margin: 0 0 6px; font-size: 18px; font-weight: 600; }
 .install, .help { padding: 56px 0; }
 .install { border-bottom: 1px solid var(--line); }
 
+.intro { max-width: 40em; margin: 0; }
+
+.methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 24px 0 0;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.methods button {
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font: 500 15px var(--body);
+  cursor: pointer;
+}
+.methods button:hover { color: var(--text); }
+.methods button[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+
+.summary { max-width: 40em; margin: 14px 0 0; font-size: 15px; color: var(--muted); }
+
 .steps { margin: 28px 0 0; padding: 0; list-style: none; counter-reset: step; }
 
 .steps > li {
